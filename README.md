@@ -54,7 +54,7 @@ This agent uses a Large Language Model (LLM) as its reasoning engine to:
 The agent processes different VNF packages, demonstrating both successful approvals and rejections based on defined criteria.
 
 ### Scenario 1: Valid VNF Package (Approved)
-![Approved Scenario Screenshot](images/approved_scenario.png)
+![Rejected Scenario Screenshot](images/approved_scenario.png)
 
 ### Scenario 2: Invalid VNF Package (Rejected)
-![Rejected Scenario Screenshot](images/rejected_scenario.png)
+![Approved Scenario Screenshot](images/rejected_scenario.png)

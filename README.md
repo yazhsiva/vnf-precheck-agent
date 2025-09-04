@@ -58,17 +58,3 @@ The agent processes different VNF packages, demonstrating both successful approv
 
 ### Scenario 2: Invalid VNF Package (Rejected)
 ![Rejected Scenario Screenshot](images/rejected_scenario.png)
-
-## Interview Talking Points (Principal Engineer)
-
-### 1. The Business Problem & Value Proposition
-"In complex platforms like VNF onboarding, late-stage validation failures are extremely costly. This 'VNF Pre-check Agent' demonstrates how we can leverage Agentic AI to **shift-left** quality control. It provides instant, automated feedback, significantly reducing the feedback loop for network engineers and ensuring only compliant packages enter expensive full onboarding pipelines."
-
-### 2. Architectural Design & Pragmatism
-"The agent uses an LLM (Phi-3, running locally via Ollama for privacy and cost control) as its reasoning engine. Since Phi-3 doesn't natively support OpenAI's `tools` API, I opted for a more robust approach: **prompt engineering for structured JSON output**. The LLM generates a plan as a JSON object, which our Python orchestration layer then parses and executes. This shows adaptability, choosing the right strategy for the specific LLM's capabilities rather than forcing an unsupported feature. The **pluggable tool architecture** makes it easily extensible for future checks."
-
-### 3. Engineering Excellence & Trade-offs
-"Using a local, open-source model like Phi-3 via Ollama offers immense benefits: **complete data privacy** (critical for sensitive VNF configurations), **zero API costs**, and **full control** over the model's environment. The trade-off is often slightly less powerful reasoning compared to a proprietary API model like GPT-4o, and the need for more explicit prompt engineering for structured outputs. This highlights an understanding of **production considerations** – balancing performance, cost, security, and maintainability."
-
-### 4. Future Vision & Scalability
-"This is a foundational component. Building on this, we could integrate it into a CI/CD pipeline (e.g., triggered on VNF package commit), develop a dedicated UI, and even explore more advanced tools like static analysis for VNF scripts or performance simulation. We could also consider fine-tuning a small model for highly specific, repetitive validation tasks to further optimize speed and accuracy, leveraging the data collected from initial runs."
